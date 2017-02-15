@@ -1,15 +1,7 @@
 package tests;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pages.ClientsPage;
-import pages.LoginPage;
-
-import java.util.concurrent.TimeUnit;
 
 public class Step1RuggedTest extends BaseTest{
 
@@ -24,7 +16,7 @@ public class Step1RuggedTest extends BaseTest{
     }
 
     @Test
-    public void testAddQuotationForClient() {
+    public void verifyAddQuotationForClient() {
         loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         driver.findElement(By.linkText("Quotations")).click();
@@ -36,7 +28,7 @@ public class Step1RuggedTest extends BaseTest{
     }
 
     @Test
-    public void testServiceTaxSearch(){
+    public void verifyServiceTaxSearch(){
         loginPage.login(USER_NAME, PASSWORD);
         driver.findElement(By.linkText("TAXES")).click();
         driver.findElement(By.linkText("SERVICE TAXES")).click();

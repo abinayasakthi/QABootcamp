@@ -12,6 +12,7 @@ public class LoginPage {
 //    private WebElement loginInBtn = driver.findElement(By.name("commit"));
 
     public LoginPage(WebDriver driver) {
+        System.out.println("Created login page constructor");
         this.driver = driver;
     }
 
@@ -21,7 +22,6 @@ public class LoginPage {
         driver.findElement(By.id("user_password")).sendKeys(passWord);
 //        userEmail.sendKeys(userName);
 //        userPassword.sendKeys(passWord);
-        driver.findElement(By.name("commit")).click();
         driver.findElement(By.name("commit")).click();
     }
 

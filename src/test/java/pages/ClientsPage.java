@@ -9,6 +9,7 @@ public class ClientsPage {
     private WebDriver driver;
 
     public ClientsPage(WebDriver driver) {
+        System.out.println("Created cleint page constructor");
         this.driver=driver;
     }
 

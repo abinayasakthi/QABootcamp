@@ -11,19 +11,13 @@ import pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class Step1RuggedTest {
-
-    public WebDriver driver;
-
+public class Step1RuggedTest extends BaseTest{
 
     private String USER_NAME = "letslearnandshare@gmail.com";
     private String PASSWORD = "!abcd1234";
 
     @Test
     public void testEditAccount() {
-        ClientsPage clientsPage = new ClientsPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-
         loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         clientsPage.editClientDetails();
@@ -31,8 +25,6 @@ public class Step1RuggedTest {
 
     @Test
     public void testAddQuotationForClient() {
-        ClientsPage clientsPage = new ClientsPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         driver.findElement(By.linkText("Quotations")).click();
@@ -45,8 +37,6 @@ public class Step1RuggedTest {
 
     @Test
     public void testServiceTaxSearch(){
-        ClientsPage clientsPage = new ClientsPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(USER_NAME, PASSWORD);
         driver.findElement(By.linkText("TAXES")).click();
         driver.findElement(By.linkText("SERVICE TAXES")).click();
@@ -55,23 +45,9 @@ public class Step1RuggedTest {
         driver.findElement(By.cssSelector("#end_date + input")).click();
     }
 
-    @Before
-    public void setUp(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-    }
 
-    @After
-    public void tearDown(){
-        logout();
-        driver.close();
-        driver.quit();
-    }
 
-    private void logout() {
-        driver.findElement(By.cssSelector("span.glyphicon-log-out")).click();
-    }
+
 
     private void updateQuotationDetails() {
         driver.findElement(By.name("commit")).click();

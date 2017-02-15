@@ -14,14 +14,16 @@ import java.util.concurrent.TimeUnit;
 public class Step1RuggedTest {
 
     public WebDriver driver;
-    public ClientsPage clientsPage = new ClientsPage(driver);
-    public LoginPage loginPage = new LoginPage(driver);
+
 
     private String USER_NAME = "letslearnandshare@gmail.com";
     private String PASSWORD = "!abcd1234";
 
     @Test
     public void testEditAccount() {
+        ClientsPage clientsPage = new ClientsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+
         loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         clientsPage.editClientDetails();
@@ -29,6 +31,8 @@ public class Step1RuggedTest {
 
     @Test
     public void testAddQuotationForClient() {
+        ClientsPage clientsPage = new ClientsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         driver.findElement(By.linkText("Quotations")).click();
@@ -41,6 +45,8 @@ public class Step1RuggedTest {
 
     @Test
     public void testServiceTaxSearch(){
+        ClientsPage clientsPage = new ClientsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(USER_NAME, PASSWORD);
         driver.findElement(By.linkText("TAXES")).click();
         driver.findElement(By.linkText("SERVICE TAXES")).click();

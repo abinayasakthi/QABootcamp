@@ -17,16 +17,19 @@ public class Step1RuggedTest {
     public ClientsPage clientsPage = new ClientsPage(driver);
     public LoginPage loginPage = new LoginPage(driver);
 
+    private String USER_NAME = "letslearnandshare@gmail.com";
+    private String PASSWORD = "!abcd1234";
+
     @Test
     public void testEditAccount() {
-        loginPage.login();
+        loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         clientsPage.editClientDetails();
     }
 
     @Test
     public void testAddQuotationForClient() {
-        loginPage.login();
+        loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         driver.findElement(By.linkText("Quotations")).click();
         driver.findElement(By.partialLinkText("Add New Quotation")).click();
@@ -38,7 +41,7 @@ public class Step1RuggedTest {
 
     @Test
     public void testServiceTaxSearch(){
-        loginPage.login();
+        loginPage.login(USER_NAME, PASSWORD);
         driver.findElement(By.linkText("TAXES")).click();
         driver.findElement(By.linkText("SERVICE TAXES")).click();
         driver.findElement(By.id("start_date")).sendKeys("16-02-2017");
@@ -63,8 +66,6 @@ public class Step1RuggedTest {
     private void logout() {
         driver.findElement(By.cssSelector("span.glyphicon-log-out")).click();
     }
-
-
 
     private void updateQuotationDetails() {
         driver.findElement(By.name("commit")).click();

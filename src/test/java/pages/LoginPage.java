@@ -2,24 +2,19 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LoginPage {
     private WebDriver driver;
 
-    private WebElement userEmail = driver.findElement(By.id("user_email"));
-    private WebElement userPassword = driver.findElement(By.id("user_password"));
-    private WebElement loginInBtn = driver.findElement(By.name("commit"));
-
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        this.driver=driver;
     }
 
-    public void login(String userName, String passWord) {
+    public void login() {
         driver.navigate().to("http://accountsdemo.herokuapp.com");
-        userEmail.sendKeys(userName);
-        userPassword.sendKeys(passWord);
-        loginInBtn.click();
+        driver.findElement(By.id("user_email")).sendKeys("letslearnandshare@gmail.com");
+        driver.findElement(By.id("user_password")).sendKeys("!abcd1234");
+        driver.findElement(By.name("commit")).click();
     }
 
 }

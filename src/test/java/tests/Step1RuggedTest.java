@@ -1,9 +1,21 @@
 package tests;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pages.ClientsPage;
+import pages.LoginPage;
 
-public class Step1RuggedTest extends BaseTest{
+import java.util.concurrent.TimeUnit;
+
+public class Step1RuggedTest {
+
+    public WebDriver driver;
+    public ClientsPage clientsPage = new ClientsPage(driver);
+    public LoginPage loginPage = new LoginPage(driver);
 
     private String USER_NAME = "letslearnandshare@gmail.com";
     private String PASSWORD = "!abcd1234";
@@ -16,7 +28,7 @@ public class Step1RuggedTest extends BaseTest{
     }
 
     @Test
-    public void verifyAddQuotationForClient() {
+    public void testAddQuotationForClient() {
         loginPage.login(USER_NAME, PASSWORD);
         clientsPage.searchClient();
         driver.findElement(By.linkText("Quotations")).click();
@@ -28,7 +40,7 @@ public class Step1RuggedTest extends BaseTest{
     }
 
     @Test
-    public void verifyServiceTaxSearch(){
+    public void testServiceTaxSearch(){
         loginPage.login(USER_NAME, PASSWORD);
         driver.findElement(By.linkText("TAXES")).click();
         driver.findElement(By.linkText("SERVICE TAXES")).click();
@@ -37,9 +49,23 @@ public class Step1RuggedTest extends BaseTest{
         driver.findElement(By.cssSelector("#end_date + input")).click();
     }
 
+    @Before
+    public void setUp(){
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    }
 
+    @After
+    public void tearDown(){
+        logout();
+        driver.close();
+        driver.quit();
+    }
 
-
+    private void logout() {
+        driver.findElement(By.cssSelector("span.glyphicon-log-out")).click();
+    }
 
     private void updateQuotationDetails() {
         driver.findElement(By.name("commit")).click();

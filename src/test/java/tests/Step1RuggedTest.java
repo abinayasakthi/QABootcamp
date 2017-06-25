@@ -20,6 +20,7 @@ public class Step1RuggedTest extends BasePage {
         loginPage.login();
         homePage.goToClientsPage();
         clientsPage.searchClient();
+        assert (clientsPage.getClientName().equalsIgnoreCase("Thoughtworks 1")); ;
         editClientDetailsPage.editClientDetails();
         loginPage.logout();
     }

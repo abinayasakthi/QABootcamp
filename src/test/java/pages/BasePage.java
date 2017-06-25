@@ -20,7 +20,7 @@ public class BasePage {
         return driver;
     }
 
-    private void startDriver() {
+    public void startDriver() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);

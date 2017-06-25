@@ -7,8 +7,8 @@ import pages.*;
  */
 public class BaseStep extends BasePage {
     HomePage homePage = new HomePage(driver);
-    ClientsPage clientsPage = new ClientsPage(driver);
     LoginPage loginPage = new LoginPage(driver);
+    ClientsPage clientsPage = new ClientsPage(driver);
     EditClientDetailsPage editClientDetailsPage = new EditClientDetailsPage(driver);
 
 }

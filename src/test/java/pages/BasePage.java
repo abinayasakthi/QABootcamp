@@ -16,6 +16,10 @@ public class BasePage {
         driver.navigate().to("http://accountsdemo.herokuapp.com");
     }
 
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
     private void startDriver() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();

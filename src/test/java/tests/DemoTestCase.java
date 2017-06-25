@@ -4,16 +4,11 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
-public class Step1RuggedTest extends BasePage {
+public class DemoTestCase extends BaseStep {
 
-    HomePage homePage=new HomePage(driver);
-    ClientsPage clientsPage = new ClientsPage(driver);
-    LoginPage loginPage = new LoginPage(driver);
-    EditClientDetailsPage editClientDetailsPage=new EditClientDetailsPage(driver);
 
     @Test
     public void testEditAccount() {
